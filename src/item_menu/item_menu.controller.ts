@@ -26,7 +26,7 @@ export class ItemMenuController {
   @Put(':id')
   async actualizarItemMenu(
     @Param('id') id: number,
-    @Body() itemMenuDto: ItemMenu,
+    @Body() itemMenuDto: any,
   ): Promise<ItemMenu> {
     return this.itemMenuService.actualizarItemMenu(id, itemMenuDto);
   }
