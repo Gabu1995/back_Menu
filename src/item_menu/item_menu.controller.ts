@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
 import { ItemMenuService } from './item_menu.service';
 import { ItemMenu } from 'src/entity/item_menu.entity';
+import { ItemMenuDto } from 'src/DTO/item.menu.dto';
 
 
 @Controller('items-menu')
@@ -8,7 +9,7 @@ export class ItemMenuController {
   constructor(private readonly itemMenuService: ItemMenuService) {}
 
   @Get()
-  async obtenerTodosLosItemsMenu(): Promise<ItemMenu[]> {
+  async obtenerTodosLosItemsMenu(): Promise<ItemMenuDto[]> {
     return this.itemMenuService.obtenerTodosLosItemsMenu();
   }
 

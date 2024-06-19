@@ -22,7 +22,7 @@ export class ItemMenu {
   @Column('decimal', { precision: 10, scale: 2 })
   precio: number;
 
-  @ManyToOne(() => Categoria, (categoria) => categoria.items)
+  @ManyToOne(() => Categoria, (categoria) => categoria.items, { eager: true })
   id_categoria: Categoria;
 
   @Column('decimal', { precision: 3, scale: 1, nullable: true })

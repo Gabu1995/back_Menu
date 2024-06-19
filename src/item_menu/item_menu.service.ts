@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ItemMenuDto } from 'src/DTO/item.menu.dto';
 import { ItemMenu } from 'src/entity/item_menu.entity';
 import { Repository } from 'typeorm';
 
@@ -10,8 +11,9 @@ export class ItemMenuService {
     private readonly itemMenuRepository: Repository<ItemMenu>,
   ) {}
 
-  async obtenerTodosLosItemsMenu(): Promise<ItemMenu[]> {
-    return this.itemMenuRepository.find();
+  async obtenerTodosLosItemsMenu(): Promise<ItemMenuDto[]> {
+    const itemsMenu = await this.itemMenuRepository.find();
+    return itemsMenu.map(item => new ItemMenuDto(item));
   }
 
   async obtenerItemMenuPorId(id: number): Promise<ItemMenu> {
